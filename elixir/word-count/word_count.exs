@@ -21,6 +21,10 @@ defmodule Words do
   end
 
   defp replace_bad_chars(sentence) do
-    String.replace(String.replace(sentence, ~r/[^\w -]/u, ""), "_", " ")
+    String.replace(remove_non_word_chars(sentence), "_", " ")
+  end
+
+  defp remove_non_word_chars(sentence) do
+    String.replace(sentence, ~r/[^\w -]/u, "")
   end
 end
