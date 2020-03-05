@@ -1,23 +1,15 @@
 export const translate = (input = "") => {
-    if (input == "") {
+    if (input === "") {
 	return [];
     } else {
-	var s = input.match(/.{1,3}/g)
-	return do_it(s);
+	let results = input.match(/.{1,3}/g).map(trans);
+	let res = [];
+	for(let e in results) {
+	    if (results[e] === "STOP") { break; }
+	    res.push(results[e]);
+	};
+	return res;
     };
-};
-
-const do_it = (arr) => {
-    var results = arr.reduce((results, item) => {
-	results.push(trans(item));
-	return results;
-    }, []);
-    var res = [];
-    for(var e in results) {
-	if (results[e] == "STOP") { break; }
-	res.push(results[e]);
-    };
-    return res;
 };
 
 const trans = (input) => {
