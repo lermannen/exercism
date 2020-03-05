@@ -1,5 +1,5 @@
 export const decodedValue = colors => {
-    return 10 * COLORS.indexOf(colors[0]) + COLORS.indexOf(colors[1]);
+    return parseInt(colors.slice(0, 2).map(c => COLORS.indexOf(c)).join(''));
 };
 
 export const COLORS = [
