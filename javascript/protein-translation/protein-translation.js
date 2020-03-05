@@ -3,13 +3,12 @@ export const translate = (input = "") => {
 	return [];
     }
 
-    let results = input.match(/.{1,3}/g).map(trans);
-    let res = [];
-    for(let e in results) {
-	if (results[e] === "STOP") break;
-	res.push(results[e]);
+    let result = [];
+    for(const protein of input.match(/.{1,3}/g).map(trans)) {
+	if (protein === "STOP") break;
+	result.push(protein);
     };
-    return res;
+    return result;
 
 };
 
