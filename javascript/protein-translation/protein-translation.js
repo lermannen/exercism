@@ -6,7 +6,7 @@ export const translate = (input = "") => {
     let results = input.match(/.{1,3}/g).map(trans);
     let res = [];
     for(let e in results) {
-	if (results[e] === "STOP") { break; }
+	if (results[e] === "STOP") break;
 	res.push(results[e]);
     };
     return res;
@@ -34,8 +34,6 @@ var translation = {
 };
 
 const trans = input => {
-    if (translation[input] === undefined) {
-	throw new Error("Invalid codon");
-    }
+    if (translation[input] === undefined) throw new Error("Invalid codon");
     return translation[input];
 };
