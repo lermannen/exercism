@@ -12,25 +12,29 @@ export const translate = (input = "") => {
     };
 };
 
-const trans = (input) => {
-    if (input == "AUG") {
-	return "Methionine";
-    } else if (input == "UUC" || input == "UUU") {
-	return "Phenylalanine";
-    } else if (input == "UUA" || input == "UUG") {
-	return "Leucine";
-    } else if (input == "UCU" || input == "UCC" || input == "UCA" || input == "UCG") {
-	return "Serine";
-    } else if (input == "UAU" || input == "UAC") {
-	return "Tyrosine";
-    } else if (input == "UGU" || input == "UGC") {
-	return "Cysteine";
-    } else if (input == "UGG") {
-	return "Tryptophan";
-    } else if (input == "UAA" || input == "UAG" || input == "UGA") {
-	return "STOP";
-    } else {
+var translation = {
+    "AUG": "Methionine",
+    "UUC": "Phenylalanine",
+    "UUU": "Phenylalanine",
+    "UUA": "Leucine",
+    "UUG": "Leucine",
+    "UCU": "Serine",
+    "UCC": "Serine",
+    "UCA": "Serine",
+    "UCG": "Serine",
+    "UAU": "Tyrosine",
+    "UAC": "Tyrosine",
+    "UGU": "Cysteine",
+    "UGC": "Cysteine",
+    "UGG": "Tryptophan",
+    "UAA": "STOP",
+    "UAG": "STOP",
+    "UGA": "STOP",
+};
+
+const trans = input => {
+    if (translation[input] === undefined) {
 	throw new Error("Invalid codon");
     }
+    return translation[input];
 };
-    
