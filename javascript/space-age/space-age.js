@@ -1,14 +1,10 @@
 export const age = (planet, seconds) => {
-    let age = calculate_age(planet, seconds);
-    return round_to_two_decimals(age);
+    let age = age_in_earth_years(seconds)/orbital_period_in_earth_years[planet];;
+    return Number(age.toFixed(2));
 };
 
-const round_to_two_decimals = (num) => {
-    return Math.round((num + Number.EPSILON) * 100) / 100;
-};
-
-const calculate_age = (planet, seconds) => {
-    return seconds/SECONDS_PER_YEAR_ON_EARTH/orbital_period_in_earth_years[planet];
+const age_in_earth_years = (seconds) => {
+    return seconds/SECONDS_PER_YEAR_ON_EARTH;
 };
 
 const SECONDS_PER_YEAR_ON_EARTH = 31557600;
